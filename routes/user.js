@@ -1,15 +1,15 @@
 const router = require("express").Router();
 const userController = require("../controllers/userController");
-const { verifyAndAuthorization, verifyToken, verifyAndAdmin } = require("../middleware/verifyToken");
+const {verifyTokenAndAuthorization, verifyAndAdmin} = require("../middleware/verifyToken");
 
 // Update user
-router.put("/:id", verifyAndAuthorization, userController.updateUser);
+router.put("/", verifyTokenAndAuthorization, userController.updateUser);
 
 // Delete user
-router.delete("/:id", verifyAndAuthorization, userController.deleteUser);
+router.delete("/", verifyTokenAndAuthorization, userController.deleteUser);
 
 // Get user
-router.get("/:id", verifyAndAuthorization, userController.getUser);
+router.get("/", verifyTokenAndAuthorization, userController.getUser);
 
 // Get all user
 router.get("/", verifyAndAdmin, userController.getAllUsers);
