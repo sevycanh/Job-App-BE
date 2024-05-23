@@ -25,7 +25,7 @@ module.exports = {
       const userId = req.user.id;
       const jobId = req.params.id;
 
-      await Bookmark.findOneAndDelete({'userId': userId, 'job._id': jobId});
+      await Bookmark.findOneAndDelete({userId: userId, job: jobId});
       res.status(200).json("BookMark Successfully Deleted");
     } catch (error) {
       res.status(500).json(error);
